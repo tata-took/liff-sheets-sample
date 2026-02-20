@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIFF × Sheets サンプル</title>
+  <!-- LIFF SDK -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <h2>📋 フォーム送信</h2>
+  <input type="text" id="message" placeholder="メッセージを入力" />
+  <button onclick="submitData()">送信</button>
+  <p id="status"></p>
+
+  <script>
+    // ★ 自分の値に書き換える
+    const LIFF_ID  = "YOUR_LIFF_ID";
+    const GAS_URL  = "https://script.google.com/macros/s/YOUR_DEPLOY_ID/exec";
+
+    // LIFF初期化
+    liff.init({ liffId: LIFF_ID })
+      .then(() => {
+        if (!liff.isLoggedIn()) liff.login();
+      })
+      .catch(err => console.error("LIFF init error:", err));
+
+    // データ送信
+    async function submitData() {
+      const statusEl = document.getElementById("status");
+      statusEl.textContent = "送信中...";
+
+      try {
+        // LINEプロフィール取得
+        const profile = await liff.getProfile();
+
+        const payload = {
+          userId:      profile.userId,
+          displayName: profile.displayName,
+          message:     document.getElementById("message").value
+        };
+
+        // GAS WebAppにPOST
+        const res = await fetch(GAS_URL, {
+          method:  "POST",
+          headers: { "Content-Type": "text/plain" }, // GASのCORS対策
+          body:    JSON.stringify(payload)
+        });
+
+        const result = await res.json();
+        statusEl.textContent = result.status === "ok"
+          ? "✅ 送信完了！"
+          : "❌ エラー: " + result.message;
+
+      } catch (err) {
+        statusEl.textContent = "❌ 通信エラー: " + err.message;
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+</html>
