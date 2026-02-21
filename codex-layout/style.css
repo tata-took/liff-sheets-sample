@@ -145,19 +145,67 @@ h2 {
   background: var(--shift-red);
 }
 
-.weekly-scroll {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 2px;
+.weekly-card {
+  background: #e5e7eb;
 }
 
-.mini-card {
-  min-width: 118px;
-  background: #e2e8f0;
-  border-radius: 8px;
-  padding: 10px;
+.weekly-scroll {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 6px 0 2px;
+}
+
+.week-shift-item {
+  min-width: 180px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  padding: 12px 14px 14px;
+}
+
+.status-pill {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 12px;
   font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.status-pill.fixed {
+  color: #065f46;
+  background: #a7f3d0;
+}
+
+.status-pill.pending {
+  color: #0f172a;
+  background: #e2e8f0;
+}
+
+.shift-date {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.weekday-blue {
+  color: #1d4ed8;
+}
+
+.shift-shop {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #475569;
+}
+
+.shift-time {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .notice-card ul {
