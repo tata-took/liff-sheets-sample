@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShiftMate ダッシュボード再設計仕様</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar-left card">
+      <h2 class="sidebar-title">ShiftMate</h2>
+      <nav class="nav-list" aria-label="メインナビゲーション">
+        <a class="nav-item active" href="#">ホーム</a>
+        <a class="nav-item" href="#">シフト</a>
+        <a class="nav-item" href="#">申請</a>
+        <a class="nav-item" href="#">通知</a>
+        <a class="nav-item" href="#">マイページ</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <h1 class="dashboard-title">ダッシュボード</h1>
+
+      <section class="card today-shift-card">
+        <h2>今日のシフト</h2>
+        <div class="today-meta">
+          <p><strong>勤務地:</strong> 渋谷店</p>
+          <p><strong>勤務時間:</strong> 21:00 → 24:00</p>
+          <p><strong>本日の全シフト状況:</strong> 8名出勤 / 2名休み</p>
+        </div>
+
+        <div class="grid-wrapper" aria-label="勤務グリッド">
+          <div id="shiftGrid" class="shift-grid"></div>
+        </div>
+      </section>
+
+      <section class="card weekly-card">
+        <h2>今週のシフト</h2>
+        <div class="weekly-scroll">
+          <article class="mini-card">月: 17:00-21:00</article>
+          <article class="mini-card">火: 休み</article>
+          <article class="mini-card">水: 18:00-22:00</article>
+          <article class="mini-card">木: 21:00-24:00</article>
+          <article class="mini-card">金: 21:00-24:00</article>
+          <article class="mini-card">土: 10:00-16:00</article>
+          <article class="mini-card">日: 休み</article>
+        </div>
+      </section>
+
+      <section class="card notice-card">
+        <h2>お知らせ</h2>
+        <ul>
+          <li>今週末はイベント対応のため増員予定です。</li>
+          <li>22日締切: 来月前半シフト提出をお願いします。</li>
+        </ul>
+      </section>
+    </main>
+
+    <aside class="sidebar-right card">
+      <h2>右サイド情報</h2>
+      <p>欠勤申請: 1件</p>
+      <p>未読通知: 3件</p>
+      <p>承認待ち: 2件</p>
+    </aside>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
